@@ -1,0 +1,7 @@
+name = School Store
+description = School store that displays a list of a schools and supports create, update, and delete functionalies on schools
+core = 7.x
+
+package = Schools
+
+; stylesheets[all][] = css/schools.css

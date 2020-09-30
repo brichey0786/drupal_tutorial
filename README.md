@@ -41,13 +41,36 @@ tutorial there the concept of hooks will be mentioned from time to time.
   to a tag in the project starting from v1.0.1
 
 * There will be a complementary but comprehensive tutorials credited to Drupalize.me shared in
-  Google Drive. They act as references, and will be referred to along this project.
+  Google Drive. They act as references, and will be referred to along this project as `Drive: Topic/Content`.
 
-## 1. Installation of Drupal
+## 1. Drupal Installation
+  1. Choose `Standard`, and click `Save and Continue`
+  1. Click `Save and Continue`
+  1. Choose `MySQL, MariaDB, or equivalent`
+  1. Fill out:
+      * Database Name: `isafe`
+      * Database username: `root`
+      * Database password: `isafe`
+  1. Expand the “Advanced Options”, change `Database host` to be `d7mysql`, and click `Save and Continue`
+  1. Fill out:
+      * Site name: `ISAFE`
+      * Site e-mail address: `YOUR_EMAIL_ADDRESS`
+      * Username: `YOUR_USER_AMIN`
+      * E-mail address: `YOUR_EMAIL_ADDRESS`
+      * Password: `YOUR_PASSWORD`
+      * Update Notification: UNCHECK all
+  1. `Click Save and Continue`
+  1. Ignore the password leakage alert (since we are in localhost) and click `Visit your new site`
+  1. You should be redirected to the home page with the title “Welcome to ISAFE”. Note that at the top we have the admin menus starting with “Dashboard”, “Content”, etc.
+  1. You can also log out the system and try login using the email and password combination in step v.
+  1. Welcome to Drupal :)
 
-
-## 2. Register menus
-
+## 2. Register a menu
+  * `modules/custom/schools`
+      * `schools.info`: meta information about a module
+      * `schools.module`: module content
+  * Note: it may take some time for our Drupal site to refresh its registry to reflect the changes we make in the menu hook
+  * Drive: `General/Overview of the Drupal Menu System`
 ## 3. Render a list
 
 ## 4. Add links to other pages
