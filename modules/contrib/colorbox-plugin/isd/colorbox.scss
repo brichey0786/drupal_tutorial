@@ -1,0 +1,456 @@
+/**
+ * Colorbox Custom Style:
+ */
+
+@mixin file-upload-btns {
+  border-radius: 0.3em;
+  padding: 0.5em 1.5em;
+  font-weight: bold;
+  border: none;
+
+  // removes icon in Upload button
+  .glyphicon {
+    display: none;
+  }
+}
+@mixin isd-modal-save-btn {
+  border: none;
+  border-radius: 0.3em;
+  color: #fff;
+  position: absolute;
+  bottom: 10px;
+  right: 120px;
+  width: 90px;
+  height: 35px;
+  margin: 1em;
+  font-weight: bold;
+}
+
+#colorbox {
+  top: 10%;
+}
+
+#colorbox,
+#cboxOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#cboxOverlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+#cboxMiddleLeft,
+#cboxBottomLeft {
+  clear: left;
+}
+#cboxTitle {
+  margin: 0;
+}
+#cboxLoadingOverlay,
+#cboxLoadingGraphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+/**
+  * These elements are buttons, and may need to have additional
+  * styles reset to avoid unwanted base styles.
+  */
+#cboxPrevious,
+#cboxNext,
+#cboxClose,
+#cboxSlideshow {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  width: auto;
+  background: none;
+  cursor: pointer;
+}
+/**
+  * Avoid outlines on :active (mouseclick),
+  * but preserve outlines on :focus (tabbed navigating)
+  */
+#cboxPrevious:active,
+#cboxNext:active,
+#cboxClose:active,
+#cboxSlideshow:active {
+  outline: 0;
+}
+.cboxPhoto {
+  float: left;
+  margin: auto;
+  border: 0;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+.cboxIframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+/* Reset box sizing to content-box if theme is using border-box. */
+#colorbox,
+#cboxLoadedContent {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+#cboxOverlay {
+  background: #000;
+}
+#colorbox {
+  outline: 0;
+}
+
+#cboxTitle {
+  display: none;
+}
+
+#cboxTopLeft {
+  width: 15px;
+  height: 15px;
+  display: none;
+}
+#cboxTopCenter {
+  height: 15px;
+  display: none;
+}
+#cboxTopRight {
+  width: 15px;
+  height: 15px;
+  display: none;
+}
+#cboxBottomLeft {
+  width: 15px;
+  height: 10px;
+  display: none;
+}
+#cboxBottomCenter {
+  height: 10px;
+  display: none;
+}
+#cboxBottomRight {
+  width: 15px;
+  height: 10px;
+  display: none;
+}
+#cboxMiddleLeft {
+  width: 15px;
+  display: none;
+}
+#cboxMiddleRight {
+  width: 15px;
+  display: none;
+}
+#cboxError {
+  padding: 50px;
+  border: 1px solid #ccc;
+}
+#cboxLoadedContent {
+  margin-bottom: 28px;
+  padding: 0;
+  // width: auto !important;
+  // height: auto !important;
+
+  button[id^="edit-submit"] {
+    padding: unset;
+  }
+
+  // Add Logo & Text modal
+  #isd_add_logo_form {
+    .form-item-logo-text {
+      padding: 1.5em 0em;
+      label {
+        font-weight: bold;
+      }
+    }
+    .form-item-url {
+      padding-top: 1em;
+      label {
+        font-weight: bold;
+      }
+    }
+
+    #edit-file-upload-button {
+      @include file-upload-btns;
+      background-color: #418bc2;
+    }
+
+    button[id^="edit-file-remove-button"] {
+      @include file-upload-btns;
+      background-color: #de5148;
+    }
+
+    // removes upload file border
+    #edit-file-upload {
+      .form-control {
+        // border: none !important;
+        box-shadow: none;
+        padding: 0.5em 0em;
+        background: rgba(0, 0, 0, 0);
+      }
+    }
+    hr {
+      display: none;
+    }
+    h1 {
+      margin-top: 0;
+    }
+  }
+
+  // Add Video modal
+  #isd_video_form {
+    // Submit button
+    button[id^="edit-submit"] {
+      @include isd-modal-save-btn;
+    }
+    .form-item-custom-source {
+      padding-top: 1em;
+    }
+
+    #isd-video-form {
+      h3 {
+        // font-size: 36px !important;
+        // font-weight: 400 !important;
+        margin-top: 0;
+      }
+    }
+  }
+  // Add Questions modal
+  #isd_questions_form {
+    padding: 0;
+    button[id^="edit-next"] {
+      @include isd-modal-save-btn;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    .form-item {
+      &-question-amount,
+      &-percentage-required {
+        padding-top: 1em;
+      }
+    }
+  }
+  #isd_agreement_text_form {
+    button[id^="edit-submit"] {
+      @include isd-modal-save-btn;
+    }
+    #edit-signature-option {
+      padding-top: 1em;
+    }
+    hr {
+      display: none;
+    }
+    // switch to h1
+    h5 {
+      font-size: 36px;
+      margin-top: 0;
+    }
+  }
+}
+#cboxTitle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  bottom: 28px;
+  left: 0;
+  color: #535353;
+  width: 100%;
+  padding: 4px 6px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#cboxCurrent {
+  position: absolute;
+  bottom: 4px;
+  left: 60px;
+  color: #949494;
+}
+.cboxSlideshow_on #cboxSlideshow {
+  position: absolute;
+  bottom: 0px;
+  right: 30px;
+  background: url(images/controls.png) no-repeat -75px -50px;
+  width: 25px;
+  height: 25px;
+  text-indent: -9999px;
+}
+.cboxSlideshow_on #cboxSlideshow:hover {
+  background-position: -101px -50px;
+}
+.cboxSlideshow_off #cboxSlideshow {
+  position: absolute;
+  bottom: 0px;
+  right: 30px;
+  background: url(images/controls.png) no-repeat -25px -50px;
+  width: 25px;
+  height: 25px;
+  text-indent: -9999px;
+}
+.cboxSlideshow_off #cboxSlideshow:hover {
+  background-position: -49px -50px;
+}
+#cboxPrevious {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: url(images/controls.png) no-repeat -75px 0px;
+  width: 25px;
+  height: 25px;
+  text-indent: -9999px;
+}
+#cboxPrevious:hover {
+  background-position: -75px -25px;
+}
+#cboxNext {
+  position: absolute;
+  bottom: 0;
+  left: 27px;
+  width: 25px;
+  height: 25px;
+}
+#cboxNext:hover {
+  background-position: -50px -25px;
+}
+#cboxLoadingOverlay {
+  // background: #fff;
+  background: transparent;
+}
+#cboxLoadingGraphic {
+  background: url(images/loading_animation.gif) no-repeat center center;
+}
+#cboxClose {
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  &::before {
+    display: inline;
+    content: "\2715";
+    font-size: 30px;
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+  // Old Drupal way
+  // position: absolute;
+  // bottom: 10px;
+  // right: 0;
+  // width: 90px;
+  // height: 35px;
+  // font-weight: bold;
+  // border-radius: 0.3em;
+  // color: #fff;
+  // margin: 1em 2em 1em 0em;
+  // display: block !important;
+  // background: #bcbcbc !important;
+}
+.colorbox-submit-btn {
+  position: absolute;
+  // background-color: #418bc2 !important;
+  bottom: 10px;
+  right: 120px;
+  width: 90px;
+  height: 35px;
+  margin: 1em;
+  font-weight: bold;
+}
+#cboxClose:hover {
+  background-position: -25px -25px;
+}
+
+#cboxLoadedContent {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  // background: green;
+  // height: 500px;
+}
+
+#cboxContent {
+  // position: relative;
+  // background: rgb(244, 244, 244) !important;
+  float: unset;
+  width: 100%;
+  margin-right: 0;
+  padding: 2em;
+  border-radius: 16px;
+  box-sizing: border-box;
+  // background: red;
+}
+
+#colorbox {
+  background: #e8e8e8;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+}
+
+// All the content within the cbox div appended at the end of body tag
+#cboxWrapper {
+  // background: rgb(244, 244, 244) !important;
+  // overflow: hidden;
+  // position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+
+  // For scrollbar (vertical overflow)
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .cboxButtonGroup {
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 -12px;
+    // padding-bottom: 32px;
+    // For save and cancel button (if there's any)
+    a[data-type="button"] {
+      padding: 8px 12px;
+      color: #fff;
+      border-radius: 4px;
+      min-width: 120px;
+      text-align: center;
+      margin: 0 12px;
+      min-height: 18px;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+        text-decoration: none;
+      }
+    }
+  }
+}

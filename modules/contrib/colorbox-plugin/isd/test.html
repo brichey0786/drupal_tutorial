@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #box {
+      position: absolute;
+      top: 25vh;
+      left: 25vw;
+      background-color: #800000;
+      width: 50vw;
+      height: 50vh;
+    }
+
+    #a {
+      position: relative;
+      width: 30vw;
+      height: 30vh;
+      background-color: #008000;
+    }
+
+    #b {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    #b::before {
+      content: "\2716";
+      font-size: 50px;
+    }
+
+    #b2 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    #b2::before {
+      content: "\2714";
+      font-size: 50px;
+    }
+
+    #c {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    #c::before {
+      content: "\2715";
+      font-size: 50px;
+    }
+
+    #wrapper {
+      width: 800px;
+      height: 800px;
+      border: 5px dashed #000080
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box">
+    <div id="a">
+      <div id="wrapper">
+        <div id="b">
+        </div>
+        <p>test1</p>
+        <p>test2</p>
+        <p>test3</p>
+        <p>test4</p>
+        <div id="b2">
+        </div>
+      </div>
+    </div>
+    <div id="c">
+
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="example_form.css" />
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+  </script>
+  <script
+    src="../jquery.colorbox.js">
+  </script>
+  <script>
+    // console.log(typeof jQuery)
+    if (typeof jQuery === "undefined") {
+      const script = document.createElement("script");
+      script.setAttribute("src",
+        "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.jshttps://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+        );
+      document.getElementsByTagName("head")[0].appendChild(script);
+
+      const myscript = '<script>alert("jquery loaded");<\/script>';
+      document.body.appendChild(documentFragment);
+    } else {
+      if (typeof $.colorbox !== "undefined") {
+        console.log('not loading colorbox again')
+      } else {
+        const script = document.createElement("script");
+        script.setAttribute("src", "../jquery.colorbox.js");
+        document.getElementsByTagName("head")[0].appendChild(script);
+      }
+
+      $(document).ready(function () {
+        // ISD specific
+        $(".isd").colorbox({
+          speed: 350,
+          opacity: 0.85,
+          // onClosed: () => alert('closed'),
+          onSaved: () => alert('saved'),
+          cancelButton: false,
+          saveButton: false,
+          // width: 600,
+          // height: 450,
+          // mw: 800,
+          // mh: 500,
+        });
+      })
+    }
+  </script>
+</head>
+
+<body>
+  <form id="isd-example-form">
+    <h1>Add Logo & Text</h1>
+    <h2 class="title">Add Logo</h2>
+    <div class="form-logo">
+      <label class="label" for="url">Enter URL (Include http://)</label>
+      <input id="url" type="text" />
+    </div>
+    <div class="form-upload">
+      <label for="file-upload">
+        <span data-role="button">
+          Choose File
+        </span>
+        <span data-role="description">No file chosen yet</span>
+      </label>
+
+      <input id="file-upload" type="file" />
+      <button>Upload Image</button>
+    </div>
+    <h2 class="title">Slogan Text</h2>
+    <div class="form-slogan">
+      <input type="text" />
+    </div>
+    <div class="form-actions"><button>Save</button><button>Cancel</button></div>
+  </form>
+  <p><a class="isd" href="./index.html">Nested Action</a></p>
+</body>
+
+</html>
