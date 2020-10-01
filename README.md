@@ -66,12 +66,22 @@ tutorial there the concept of hooks will be mentioned from time to time.
   1. Welcome to Drupal :)
 
 ## 2. Register a menu
+  * VSCode Extensions (Recommended)
+    1. PHP IntelliSense
+    2. PHP Intelephense
+    3. Drupal-7-Snippets
+    4. Drupal-7-Hooks-Snippets
+    5. Sass/Less/Scss/Typescript/Jade/Pug Compile Hero Pro
+    6. JS Refactor
   * `modules/custom/schools`
       * `schools.info`: meta information about a module
       * `schools.module`: module content
   * Note: it may take some time for our Drupal site to refresh its registry to reflect the changes we make in the menu hook
   * Drive: `General/Overview of the Drupal Menu System`
+
 ## 3. Render a list
+  * Make sure you pull tag v1.0.3 from this repository, which contains our updated docker composer configuration files.
+  * Make sure to run `docker-compose up -d` again. You should be able to visit the same URL and see our item list.
 
 ## 4. Add links to other pages
 
@@ -94,3 +104,26 @@ tutorial there the concept of hooks will be mentioned from time to time.
 ## 13. Preact
 
 ## 14. Summary
+
+
+# Misc
+
+* [Named volumne mapped to host](https://stackoverflow.com/questions/36387032/how-to-set-a-path-on-host-for-a-named-volume-in-docker-compose-yml/49920624#49920624)
+
+
+* [WSL2 and docker volumes](https://stackoverflow.com/questions/43181654/locating-data-volumes-in-docker-desktop-windows)
+
+
+
+* [Remove anonymous containers and volumes](https://stackoverflow.com/questions/34658836/docker-is-in-volume-in-use-but-there-arent-any-docker-containers)
+
+
+* [Docker nested volume mounting](https://github.com/docker/for-win/issues/5540)
+
+* Clean up (start everything over)
+
+    `docker-compose kill`
+
+    `docker-compose down -v --rmi all --remove-orphans`
+
+* [Disable Zend OpCache](https://www.woktron.com/secure/knowledgebase/261/Disable-Opcache-for-PHP.html)

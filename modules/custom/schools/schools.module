@@ -28,9 +28,46 @@ function schools_menu() {
 
 }
 
+/**
+
+ * Implements hook_init().
+
+ */
+
+function schools_init() {
+  // Prevent the page from being cached.
+  // drupal_page_is_cacheable(FALSE);
+  // drupal_flush_all_caches();
+}
 
 function schools_overview() {
-  return array(
-    '#markup' => '<p>This is the school overview page test</p>'
+  // $list = theme('item_list', array(
+  //   'items' => array(
+  //     'item A',
+  //     'item B',
+  //     'item C',
+  //   ),
+  //   'title' => 'List of Schools',
+  // )); // theme_item_list
+
+  $list = array(
+    '#theme' => 'item_list',
+    '#items' => array(
+      'item A',
+      'item B',
+      'item C',
+      'item D',
+    ),
+    '#title' => 'List of Schools',
   );
+
+  dpm($list);
+  
+  // option 1: render the list as markup
+  // return array(
+  //   '#markup' =>  $list,
+  // );
+
+  // option 2: use the theme directly in the render array
+  return $list;
 }

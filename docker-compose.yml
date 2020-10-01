@@ -7,63 +7,21 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: unless-stopped
     env_file: .env
-    volumes:
-      - db-data:/var/lib/mysql
-    networks:
-      - internal
     ports:
       - 3309:3306
 
   d7:
-      image: drupal:7.73-fpm-alpine
-      container_name: d7
-      depends_on:
-        - d7mysql
-      restart: unless-stopped
-      networks:
-        - internal
-        - external
-      volumes:
-        - drupal-data:/var/www/html
-        - ./modules:/var/www/html/sites/default/modules:consistent
-        - ./modules/contrib/colorbox-plugin:/var/www/html/sites/all/libraries/colorbox
-
-  d7web:
-    image: nginx:1.17.4-alpine
-    container_name: d7web
-    depends_on:
-      - d7
-    restart: unless-stopped
+    image: drupal:7.73-apache
+    container_name: d7
     ports:
       - 8889:80
+    depends_on:
+      - d7mysql
     volumes:
       - drupal-data:/var/www/html
-      - ./modules:/var/www/html/sites/default/modules:consistent
-      - ./modules/contrib/colorbox-plugin:/var/www/html/sites/all/libraries/colorbox
-      - ./nginx-conf:/etc/nginx/conf.d
-    networks:
-      - external
-
-  d7pma:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      # PMA_ARBITRARY: 1
-      PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: isafe
-      PHP_UPLOAD_MAX_FILESIZE: 1G
-      PHP_MAX_INPUT_VARS: 1G
-    ports:
-      - "8002:80"
-    networks:
-      - internal
-
-networks:
-  external:
-    driver: bridge
-  internal:
-    driver: bridge
+      - ./modules:/var/www/html/sites/all/modules:consistent
+      - ./.htaccess:/var/www/html/.htaccess
+    restart: always
 
 volumes:
   drupal-data:
-  db-data:
