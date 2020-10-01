@@ -21,6 +21,7 @@ services:
       - drupal-data:/var/www/html
       - ./modules:/var/www/html/sites/all/modules:consistent
       - ./.htaccess:/var/www/html/.htaccess
+      - ./settings.php:/var/www/html/sites/default/settings.php
     restart: always
 
 volumes:

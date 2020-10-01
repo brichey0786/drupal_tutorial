@@ -19,10 +19,14 @@ function schools_menu() {
  $items = array();
  $items['schools'] = array(
    'title' => 'Schools Overview',
-   'description' => 'Schools overview page',
-   'page callback' => 'schools_overview',
+   'page callback' => 'schools_overview_page',
    'access callback' => TRUE
  );
+ $items['schools/%'] = array(
+  'title' => 'Schools Form',
+  'page callback' => 'schools_form_page',
+  'access callback' => TRUE
+);
 
  return $items;
 
@@ -40,34 +44,47 @@ function schools_init() {
   // drupal_flush_all_caches();
 }
 
-function schools_overview() {
-  // $list = theme('item_list', array(
-  //   'items' => array(
-  //     'item A',
-  //     'item B',
-  //     'item C',
-  //   ),
-  //   'title' => 'List of Schools',
-  // )); // theme_item_list
+function schools_overview_page() {
 
-  $list = array(
-    '#theme' => 'item_list',
-    '#items' => array(
-      'item A',
-      'item B',
-      'item C',
-      'item D',
+  // option 1: use anchor tag directly
+  // $link = '<a href="/schools/1">Link 1</a>';
+
+  // option 2: theme_link()
+  // $link = theme('link', array(
+  //   'text' => 'Link 2',
+  //   'path' => '/schools/1',
+  //   'options' => array(
+  //     'attributes' => array(),
+  //     'html' => FALSE,
+  //   )
+  // ));
+
+  $link = array(
+    '#theme' => 'link',
+    '#text' => 'Link 3',
+    '#path' => '/schools/1',
+    '#options' => array(
+      'attributes' => array(),
+      'html' => FALSE,
     ),
-    '#title' => 'List of Schools',
   );
 
-  dpm($list);
-  
-  // option 1: render the list as markup
-  // return array(
-  //   '#markup' =>  $list,
-  // );
+  // dpm($link);
 
-  // option 2: use the theme directly in the render array
-  return $list;
+  // $link_rendered = drupal_render($link);
+
+  // dpm($link_rendered);
+
+  // option 3: l()
+  // $link = l(t('Link 4'), '/schools/1', array('attributes' => array()));
+
+  return $link;
+
+}
+
+
+function schools_form_page() {
+  return array(
+    '#markup' => 'schools_form_page',
+  );
 }
