@@ -22,7 +22,7 @@ function schools_menu() {
    'page callback' => 'schools_overview_page',
    'access callback' => TRUE
  );
- $items['schools/%'] = array(
+ $items['schools/create'] = array(
   'title' => 'Schools Form',
   'page callback' => 'schools_form_page',
   'access callback' => TRUE
@@ -80,22 +80,22 @@ function schools_create_school_form($form, &$form_state) {
   $form['title'] = array(
     '#markup' => '<h2>Register a school</h2>',
   );
-  $form['school_name'] = array(
+  $form['name'] = array(
     '#type' => 'textfield', 
     '#title' => 'School Name',   
-    '#maxlength' => 128, 
+    '#maxlength' => 255, 
     '#required' => TRUE,
   );
-  $form['school_address'] = array(
+  $form['address'] = array(
     '#type' => 'textfield', 
     '#title' => 'School Address',   
-    '#maxlength' => 128, 
+    '#maxlength' => 255, 
     '#required' => TRUE,
   );
-  $form['school_zip'] = array(
+  $form['zip'] = array(
     '#type' => 'textfield', 
     '#title' => 'Zip Code',   
-    '#maxlength' => 128, 
+    '#maxlength' => 10, 
     '#required' => TRUE,
   );
   $form['submit'] = array(
@@ -108,11 +108,52 @@ function schools_create_school_form($form, &$form_state) {
   return $form;
 }
 
+/**
+ * Implements validation from the Form API.
+ * 
+ * @param $form
+ *   A structured array containing the elements and properties of the form.
+ * @param $form_state
+ *   An array that stores information about the form's current state 
+ *   during processing.
+ */
 function schools_create_school_form_validate($form, &$form_state) {
   // dpm($form_state);
+  $values = &$form_state['values'];
+  $name = $values['name'];
+  $address = $values['address'];
+  $zip = $values['zip'];
+
+  if (strlen($name) > 255){
+    form_set_error('name', 'Length of name field must be less than 255.');
+  }
+
+  if (strlen($address) > 255){
+    form_set_error('address', 'Length of address field must be less than 255.');
+  }
+
+  if (strlen($zip) != 5){
+    form_set_error('zip', 'Zip code must be of length 5.');
+  }
+
+  if(!is_numeric($zip)) {
+    form_set_error('zip', 'Zip code cannot contain nonnumeric values');
+  }
 }
 
 function schools_create_school_form_submit($form, &$form_state) {
-  dpm('submit');
-  dpm($form_state);
+  // dpm('submit');
+  // dpm($form_state);
+  $values = &$form_state['values'];
+  $name = $values['name'];
+  $address = $values['address'];
+  $zip = $values['zip'];
+  db_insert('`schools`')
+    ->fields(array('name', 'address', 'zip'))
+    ->values(array(
+        'name' => $name,
+        'address' => $address,
+        'zip' => $zip,
+        ))
+    ->execute();  
 }

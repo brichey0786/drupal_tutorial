@@ -93,7 +93,7 @@ tutorial there the concept of hooks will be mentioned from time to time.
 
 ## 7. Handle form validation and submission
 
-## 8. Retrieve records from database
+## 8. CRUD and Styling Wrap up 
 
 ## 9. `hook_data` and Views
 
