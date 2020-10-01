@@ -84,7 +84,43 @@ function schools_overview_page() {
 
 
 function schools_form_page() {
-  return array(
-    '#markup' => 'schools_form_page',
+  $form = drupal_get_form('schools_create_school_form');
+  // dpm($form);
+
+  return $form;
+}
+
+function schools_create_school_form($form, &$form_state) {
+  $form['school_name'] = array(
+    '#type' => 'textfield', 
+    '#title' => 'School Name',   
+    '#maxlength' => 128, 
+    '#required' => TRUE,
   );
+  $form['school_address'] = array(
+    '#type' => 'textfield', 
+    '#title' => 'School Address',   
+    '#maxlength' => 128, 
+    '#required' => TRUE,
+  );
+  $form['school_zip'] = array(
+    '#type' => 'textfield', 
+    '#title' => 'Zip Code',   
+    '#maxlength' => 128, 
+    '#required' => TRUE,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit', 
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+
+function schools_create_school_form_validate($form, &$form_state) {
+  // dpm($form_state);
+}
+
+function schools_create_school_form_submit($form, &$form_state) {
+  dpm('submit');
+  dpm($form_state);
 }
