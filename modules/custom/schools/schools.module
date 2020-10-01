@@ -18,7 +18,7 @@ function schools_menu() {
  /* Your code here */
  $items = array();
  $items['schools'] = array(
-   'title' => 'Schools Overview',
+   'title' => 'Schools',
    'page callback' => 'schools_overview_page',
    'access callback' => TRUE
  );
@@ -46,39 +46,25 @@ function schools_init() {
 
 function schools_overview_page() {
 
-  // option 1: use anchor tag directly
-  // $link = '<a href="/schools/1">Link 1</a>';
+  $records = db_query('SELECT * FROM {schools}')->fetchAllAssoc('school_id');
 
-  // option 2: theme_link()
-  // $link = theme('link', array(
-  //   'text' => 'Link 2',
-  //   'path' => '/schools/1',
-  //   'options' => array(
-  //     'attributes' => array(),
-  //     'html' => FALSE,
-  //   )
-  // ));
+  // dpm($records);
+  // dpm(gettype($records));
+  // return array();
+  function getSchoolName($school)
+  {
+    return($school->name);
+  }
 
-  $link = array(
-    '#theme' => 'link',
-    '#text' => 'Link 3',
-    '#path' => '/schools/1',
-    '#options' => array(
-      'attributes' => array(),
-      'html' => FALSE,
+  $names = array_map('getSchoolName', $records);
+    
+  return array(
+    '#type' => 'container',
+    'schools' => array(
+      '#theme' => 'item_list',
+      '#items' => $names,
     ),
   );
-
-  // dpm($link);
-
-  // $link_rendered = drupal_render($link);
-
-  // dpm($link_rendered);
-
-  // option 3: l()
-  // $link = l(t('Link 4'), '/schools/1', array('attributes' => array()));
-
-  return $link;
 
 }
 
@@ -91,6 +77,9 @@ function schools_form_page() {
 }
 
 function schools_create_school_form($form, &$form_state) {
+  $form['title'] = array(
+    '#markup' => '<h2>Register a school</h2>',
+  );
   $form['school_name'] = array(
     '#type' => 'textfield', 
     '#title' => 'School Name',   
@@ -112,6 +101,9 @@ function schools_create_school_form($form, &$form_state) {
   $form['submit'] = array(
     '#type' => 'submit', 
     '#value' => 'Submit',
+  );
+  $form['#attached']['css'] = array(
+    drupal_get_path('module', 'schools') . '/css/schools_form.css',
   );
   return $form;
 }

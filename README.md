@@ -88,6 +88,8 @@ tutorial there the concept of hooks will be mentioned from time to time.
 ## 5. Build a form
 
 ## 6. Create the database schema
+1. [Install compass](http://compass-style.org/install/), add mock data, and style the page
+2. Create table and replace mock data
 
 ## 7. Handle form validation and submission
 

@@ -1,0 +1,10 @@
+[id^=schools-create-school-form] {
+  max-width: 320px;
+  input[type=submit][id^=edit-submit] {
+    width: 100%;
+    background: #CCC;
+  }
+  input.form-text {
+    width: 100%;
+  }
+}

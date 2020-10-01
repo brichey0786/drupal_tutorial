@@ -4,4 +4,4 @@ core = 7.x
 
 package = Schools
 
-; stylesheets[all][] = css/schools.css
+; stylesheets[all][] = css/schools_form.css

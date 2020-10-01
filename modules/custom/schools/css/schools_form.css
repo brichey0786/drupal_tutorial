@@ -1,0 +1,13 @@
+/* line 1, ../scss/schools_form.scss */
+[id^=schools-create-school-form] {
+  max-width: 320px;
+}
+/* line 3, ../scss/schools_form.scss */
+[id^=schools-create-school-form] input[type=submit][id^=edit-submit] {
+  width: 100%;
+  background: #CCC;
+}
+/* line 7, ../scss/schools_form.scss */
+[id^=schools-create-school-form] input.form-text {
+  width: 100%;
+}
