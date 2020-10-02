@@ -1,13 +1,24 @@
 /* line 1, ../scss/schools_form.scss */
 [id^=schools-create-school-form] {
-  max-width: 320px;
+  width: 240px;
+  background: #EDEDED;
+  padding: 16px;
+  box-sizing: border-box;
 }
-/* line 3, ../scss/schools_form.scss */
+/* line 6, ../scss/schools_form.scss */
 [id^=schools-create-school-form] input[type=submit][id^=edit-submit] {
   width: 100%;
   background: #CCC;
+  border-radius: 6px;
 }
-/* line 7, ../scss/schools_form.scss */
+/* line 11, ../scss/schools_form.scss */
 [id^=schools-create-school-form] input.form-text {
   width: 100%;
+  background-color: #E4E4E4;
+  width: 208px;
+  box-sizing: border-box;
+}
+/* line 18, ../scss/schools_form.scss */
+[id^=schools-create-school-form] h2 {
+  margin-top: 0;
 }

@@ -1,5 +1,13 @@
 <?php
 
+
+function schools_preprocess_page(&$variables) {
+  if ((strpos(current_path(), 'schools') === 0)) {
+    $variables['theme_hook_suggestions'][] = 'page__test';
+    // dpm($variables['theme_hook_suggestions']);
+  }
+}
+
 /**
  * Implements hook_menu().
  */
@@ -27,6 +35,12 @@ function schools_menu() {
   'page callback' => 'schools_form_page',
   'access callback' => TRUE
 );
+$items['schools/%'] = array(
+  'page callback' => 'schools_edit_page',
+  'page arguments' => array(1),
+  'access callback' => TRUE
+);
+
 
  return $items;
 
@@ -44,25 +58,52 @@ function schools_init() {
   // drupal_flush_all_caches();
 }
 
+
+/**
+ * Implements hook_theme().
+ */
+function schools_theme() {
+  return array(
+    'school_list' => array(
+      'variables' => array(
+        'schools' => array(),
+      ),
+      // Option 1 -- template file: xxx.tpl.php
+      'path' => drupal_get_path('module', 'schools') . '/templates',
+      'template' => 'school_list',
+      // Option 2 -- theme function
+      // 'function' => 'schools_school_list',
+    ),
+    'page__test' => array(
+
+      // base hook: A string declaring the base theme hook if this theme implementation is actually implementing a suggestion for another theme hook.
+      'base hook' => 'page',
+      'template' => 'templates/page__test',
+    ),
+  );
+}
+
 function schools_overview_page() {
 
-  $records = db_query('SELECT * FROM {schools}')->fetchAllAssoc('school_id');
+  $records = db_query('SELECT * FROM {schools}')->fetchAllAssoc('school_id', PDO::FETCH_ASSOC);
+  
+  $school_list = theme('school_list', array('schools' => $records));
+  // dpm($school_list);
 
-  // dpm($records);
-  // dpm(gettype($records));
-  // return array();
-  function getSchoolName($school)
-  {
-    return($school->name);
-  }
+  $form = drupal_get_form('schools_create_school_form');
 
-  $names = array_map('getSchoolName', $records);
-    
+  // dpm($form);
+
   return array(
-    '#type' => 'container',
-    'schools' => array(
-      '#theme' => 'item_list',
-      '#items' => $names,
+    'page' => array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'id' => 'schools-container'
+      ),
+      'schools' => array(
+        '#markup' => $school_list
+      ),
+      'form' => $form,
     ),
   );
 
@@ -76,36 +117,118 @@ function schools_form_page() {
   return $form;
 }
 
-function schools_create_school_form($form, &$form_state) {
-  $form['title'] = array(
-    '#markup' => '<h2>Register a school</h2>',
-  );
-  $form['name'] = array(
-    '#type' => 'textfield', 
-    '#title' => 'School Name',   
-    '#maxlength' => 255, 
-    '#required' => TRUE,
-  );
-  $form['address'] = array(
-    '#type' => 'textfield', 
-    '#title' => 'School Address',   
-    '#maxlength' => 255, 
-    '#required' => TRUE,
-  );
-  $form['zip'] = array(
-    '#type' => 'textfield', 
-    '#title' => 'Zip Code',   
-    '#maxlength' => 10, 
-    '#required' => TRUE,
-  );
-  $form['submit'] = array(
-    '#type' => 'submit', 
-    '#value' => 'Submit',
-  );
+function schools_create_school_form($form, &$form_state, $mode = 'create') {
+  // dpm($form);
+  // dpm($form_state);
+
+  switch ($mode) {
+    case 'create':
+      $form['title'] = array(
+        '#markup' => '<h2>Register a school</h2>',
+      );
+      $form['name'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'School Name',   
+        '#maxlength' => 255, 
+        '#required' => TRUE,
+      );
+      $form['address'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'School Address',   
+        '#maxlength' => 255, 
+        '#required' => TRUE,
+      );
+      $form['zip'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'Zip Code',   
+        '#maxlength' => 10, 
+        '#required' => TRUE,
+      );
+      $form['submit'] = array(
+        '#type' => 'submit', 
+        '#value' => 'Submit',
+      );
+    break;
+    case 'edit':
+      // get the school from the second argument
+      $school = $form_state['build_info']['args'][1];
+      // dpm($school);
+      $form['title'] = array(
+        '#markup' => '<h2>Register a school</h2>',
+      );
+      $form['name'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'School Name',   
+        '#maxlength' => 255, 
+        '#required' => TRUE,
+        '#default_value' => $school['name'], 
+      );
+      $form['address'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'School Address',   
+        '#maxlength' => 255, 
+        '#required' => TRUE,
+        '#default_value' => $school['address'], 
+      );
+      $form['zip'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'Zip Code',   
+        '#maxlength' => 10, 
+        '#required' => TRUE,
+        '#default_value' => $school['zip'], 
+      );
+      $form['actions'] = array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'id' => 'school-form-actions'
+        ),
+      );
+      $form['actions']['edit'] = array(
+        '#type' => 'button', 
+        '#value' => 'Edit',
+        '#ajax' => array(
+          'callback' => 'schools_create_school_form_callback',
+          'wrapper' => 'school-form-actions',
+          'method' => 'replace',
+          'effect' => 'fade',
+          ),
+      );
+      $form['actions']['delete'] = array(
+        '#type' => 'submit', 
+        '#value' => 'Delete',
+      );
+
+      $form['actions']['done'] = array(
+        '#type' => 'submit', 
+        '#value' => 'Done',
+        '#attributes' => array(
+          'style' => 'display:none;',
+        ),
+      );
+    break; 
+  }
+
   $form['#attached']['css'] = array(
     drupal_get_path('module', 'schools') . '/css/schools_form.css',
   );
+  
   return $form;
+}
+
+function schools_create_school_form_callback($form, &$form_state) {
+  // dpm($form_state);
+  // dpm($form);
+
+  return array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'id' => 'school-form-actions',
+    ),
+    'done' => array(
+      '#type' => 'submit', 
+      '#value' => 'Done',
+    )
+  );
 }
 
 /**
@@ -144,16 +267,70 @@ function schools_create_school_form_validate($form, &$form_state) {
 function schools_create_school_form_submit($form, &$form_state) {
   // dpm('submit');
   // dpm($form_state);
+  $mode = isset($form_state['build_info']['args'][0]) ? $form_state['build_info']['args'][0] : 'create';
   $values = &$form_state['values'];
   $name = $values['name'];
   $address = $values['address'];
   $zip = $values['zip'];
-  db_insert('`schools`')
-    ->fields(array('name', 'address', 'zip'))
-    ->values(array(
-        'name' => $name,
-        'address' => $address,
-        'zip' => $zip,
+  switch ($mode) {
+    case 'create':
+    db_insert('`schools`')
+      ->fields(array('name', 'address', 'zip'))
+      ->values(array(
+          'name' => $name,
+          'address' => $address,
+          'zip' => $zip,
+          ))
+      ->execute();
+      break;
+    case 'edit':
+      $school = $form_state['build_info']['args'][1];
+      $school_id = $school['school_id'];
+
+      // check whether to update or delete the school
+      $op = $form_state['values']['op'];
+      if ($op == 'Delete') {
+        db_delete('schools')
+        ->condition('school_id', $school_id)
+        ->execute();
+        drupal_goto('/schools');
+      } else {
+        db_update('schools') // Table name no longer needs {}
+        ->fields(array(
+          'name' => $name,
+          'address' => $address,
+          'zip' => $zip,
         ))
-    ->execute();  
+        ->condition('school_id', $school_id, '=')
+        ->execute();
+      }
+    break;
+  }
+}
+
+function schools_edit_page($school_id) {
+  if (!is_numeric($school_id)) {
+    drupal_set_message("Invalid school id $school_id", 'error');
+    return array();
+  }
+
+  // Valid numeric value, but does not guarantee there's a school with that id in the database
+  $result = db_select('schools', 's')
+  ->fields('s')
+  ->condition('school_id', $school_id,'=')
+  ->execute()
+  ->fetchAssoc();
+
+  if (!$result) {
+    drupal_set_message("School with id $school_id does not exist in the database.", 'error');
+    return array();
+  }
+
+  $form = drupal_get_form('schools_create_school_form', 'edit', $result);
+
+
+  return array(
+    'form' => $form,
+  );
+
 }

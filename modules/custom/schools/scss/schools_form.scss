@@ -1,10 +1,22 @@
 [id^=schools-create-school-form] {
-  max-width: 320px;
+  width: 240px;
+  background: #EDEDED;
+  padding: 16px;
+  box-sizing: border-box;
   input[type=submit][id^=edit-submit] {
     width: 100%;
     background: #CCC;
+    border-radius: 6px;
   }
   input.form-text {
     width: 100%;
+    background-color: #E4E4E4;
+    width: 208px;
+    box-sizing: border-box;
   }
+
+  h2 {
+    margin-top: 0;
+  }
+
 }

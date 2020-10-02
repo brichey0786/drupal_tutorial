@@ -45,25 +45,25 @@ tutorial there the concept of hooks will be mentioned from time to time.
 
 ## 1. Drupal Installation
   1. Choose `Standard`, and click `Save and Continue`
-  1. Click `Save and Continue`
-  1. Choose `MySQL, MariaDB, or equivalent`
-  1. Fill out:
+  2. Click `Save and Continue`
+  3. Choose `MySQL, MariaDB, or equivalent`
+  4. Fill out:
       * Database Name: `isafe`
       * Database username: `root`
       * Database password: `isafe`
-  1. Expand the “Advanced Options”, change `Database host` to be `d7mysql`, and click `Save and Continue`
-  1. Fill out:
+  5. Expand the “Advanced Options”, change `Database host` to be `d7mysql`, and click `Save and Continue`
+  6. Fill out:
       * Site name: `ISAFE`
       * Site e-mail address: `YOUR_EMAIL_ADDRESS`
       * Username: `YOUR_USER_AMIN`
       * E-mail address: `YOUR_EMAIL_ADDRESS`
       * Password: `YOUR_PASSWORD`
       * Update Notification: UNCHECK all
-  1. `Click Save and Continue`
-  1. Ignore the password leakage alert (since we are in localhost) and click `Visit your new site`
-  1. You should be redirected to the home page with the title “Welcome to ISAFE”. Note that at the top we have the admin menus starting with “Dashboard”, “Content”, etc.
-  1. You can also log out the system and try login using the email and password combination in step v.
-  1. Welcome to Drupal :)
+  7. `Click Save and Continue`
+  8. Ignore the password leakage alert (since we are in localhost) and click `Visit your new site`
+  9. You should be redirected to the home page with the title “Welcome to ISAFE”. Note that at the top we have the admin menus starting with “Dashboard”, “Content”, etc.
+  10. You can also log out the system and try login using the email and password combination in step v.
+  11. Welcome to Drupal :)
 
 ## 2. Register a menu
   * VSCode Extensions (Recommended)
@@ -84,16 +84,30 @@ tutorial there the concept of hooks will be mentioned from time to time.
   * Make sure to run `docker-compose up -d` again. You should be able to visit the same URL and see our item list.
 
 ## 4. Add links to other pages
-
+  * anchor tag
+  * theme_link
+  * `l()`
 ## 5. Build a form
+* [Form API](https://api.drupal.org/api/drupal/developer%21topics%21forms_api_reference.html/7.x)
+* `{YOUR_FORM_NAME}_form($form, &$form_state)`
+* `{YOUR_FORM_NAME}_form_validate($form, &$form_state)`
+* `{YOUR_FORM_NAME}_form_submit($form, &$form_state)`
 
 ## 6. Create the database schema
 1. [Install compass](http://compass-style.org/install/), add mock data, and style the page
 2. Create table and replace mock data
 
 ## 7. Handle form validation and submission
+* Note that we should get the input values from `$form_state['values']`
+* Please do not trust any user input
 
-## 8. CRUD and Styling Wrap up 
+## 8. `hook_theme`, CRUD and Styling Wrap-up 
+1. Theme hook
+2. Important notes for developers
+3. More styling
+4. Override page template
+5. Fetch individual school from database
+6. Form with different "modes"
 
 ## 9. `hook_data` and Views
 
@@ -101,11 +115,9 @@ tutorial there the concept of hooks will be mentioned from time to time.
 
 ## 11. CRUD operations on Entities
 
-## 12. Styling
+## 12. Preact
 
-## 13. Preact
-
-## 14. Summary
+## 13. Summary
 
 
 # Misc
