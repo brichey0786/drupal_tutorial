@@ -1,24 +1,130 @@
-/* line 1, ../scss/schools_form.scss */
-[id^=schools-create-school-form] {
-  width: 240px;
+/* line 3, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] {
+  width: 180px;
   background: #EDEDED;
   padding: 16px;
   box-sizing: border-box;
 }
-/* line 6, ../scss/schools_form.scss */
-[id^=schools-create-school-form] input[type=submit][id^=edit-submit] {
+/* line 10, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] label > span.form-required {
+  display: none;
+}
+/* line 14, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] div.form-item.form-type-textfield {
+  margin: 18px 0 0;
+}
+/* line 18, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] input {
+  border: none;
+}
+/* line 20, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] input:focus {
+  outline: none;
+}
+/* line 25, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] input[type=submit][id^=edit-submit] {
   width: 100%;
   background: #CCC;
   border-radius: 6px;
+  margin: 18px 0 0;
 }
-/* line 11, ../scss/schools_form.scss */
-[id^=schools-create-school-form] input.form-text {
+/* line 31, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] input.form-text {
   width: 100%;
   background-color: #E4E4E4;
-  width: 208px;
   box-sizing: border-box;
 }
-/* line 18, ../scss/schools_form.scss */
-[id^=schools-create-school-form] h2 {
+/* line 37, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] h2 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 15px !important;
+}
+/* line 46, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div {
+  display: grid;
+  grid-template-areas: "title actions" "address address" "zip zip" "rating rating";
+  grid-template-columns: 426px 211px;
+}
+/* line 51, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div h2 {
+  grid-area: title;
   margin-top: 0;
+  font-size: 23px !important;
+}
+/* line 57, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div .form-item-address {
+  grid-area: address;
+}
+/* line 61, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div .school-rating {
+  grid-area: rating;
+}
+/* line 63, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div .school-rating__stars {
+  background-color: #EDEDED;
+  color: #8E8E8E;
+  height: 44px;
+  box-sizing: border-box;
+  width: 559px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+/* line 75, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions {
+  grid-area: actions;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 -6px;
+}
+/* line 80, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions .ajax-progress-throbber {
+  display: none;
+}
+/* line 83, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input {
+  margin: 0 6px;
+  background: unset;
+  box-sizing: border-box;
+  width: 94px;
+  height: 33px;
+  font-weight: bold;
+  border-radius: 5px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  font-size: 18px;
+  text-align: center;
+  line-height: 26px;
+}
+/* line 96, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input:focus {
+  outline: none;
+}
+/* line 100, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-edit], [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[value=Done] {
+  color: #0A8BC2;
+  background-color: #C4C4C4;
+}
+/* line 104, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-delete] {
+  color: #FFF;
+  background-color: #FF4646;
+}
+/* line 110, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div label > span.form-required {
+  display: none;
+}
+/* line 114, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div input[type=text] {
+  background-color: #EDEDED;
+  color: #8E8E8E;
+  height: 44px;
+  box-sizing: border-box;
+  width: 559px;
+  border: none;
+}
+/* line 121, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div input[type=text]:focus {
+  outline: none;
 }

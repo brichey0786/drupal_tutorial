@@ -108,6 +108,8 @@ tutorial there the concept of hooks will be mentioned from time to time.
 4. Override page template
 5. Fetch individual school from database
 6. Form with different "modes"
+  * You can try to style the form to exactly match the prototype.
+  * The final styling is not included in the video but in tag v1.0.8.
 
 ## 9. `hook_data` and Views
 

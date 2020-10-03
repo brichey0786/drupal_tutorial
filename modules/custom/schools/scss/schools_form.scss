@@ -1,22 +1,129 @@
 [id^=schools-create-school-form] {
-  width: 240px;
-  background: #EDEDED;
-  padding: 16px;
-  box-sizing: border-box;
-  input[type=submit][id^=edit-submit] {
-    width: 100%;
-    background: #CCC;
-    border-radius: 6px;
-  }
-  input.form-text {
-    width: 100%;
-    background-color: #E4E4E4;
-    width: 208px;
-    box-sizing: border-box;
-  }
 
-  h2 {
-    margin-top: 0;
+  &[data-mode=create] {
+    width: 180px;
+    background: #EDEDED;
+    padding: 16px;
+    box-sizing: border-box;
+
+    // Hide the requried asterik
+    label > span.form-required {
+      display: none;
+    }
+
+    div.form-item.form-type-textfield {
+      margin: 18px 0 0;
+    }
+
+    input {
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+    
+    input[type=submit][id^=edit-submit] {
+      width: 100%;
+      background: #CCC;
+      border-radius: 6px;
+      margin: 18px 0 0;
+    }
+    input.form-text {
+      width: 100%;
+      background-color: #E4E4E4;
+      box-sizing: border-box;
+    }
+  
+    h2 {
+      margin: 0;
+      font-weight: bold;
+      font-size: 15px !important;
+    }
+  }
+  
+  &[data-mode=edit] {
+
+    > div {
+      display: grid;
+      grid-template-areas: "title actions" "address address" "zip zip" "rating rating";
+      grid-template-columns: 426px 211px;
+
+      h2 {
+        grid-area: title;
+        margin-top: 0;
+        font-size: 23px !important;
+      }
+
+      .form-item-address {
+        grid-area: address;
+      }
+
+      .school-rating {
+        grid-area: rating;  
+        &__stars {
+          background-color: #EDEDED;
+          color: #8E8E8E;
+          height: 44px;
+          box-sizing: border-box;
+          width: 559px;
+          display: flex;
+          align-items: center;
+          padding-left: 8px;
+        }
+      }
+
+      #schools-form-actions {
+        grid-area: actions;
+        display: flex;
+        justify-content: flex-end;
+        margin: 0 -6px;
+        .ajax-progress-throbber {
+          display: none;
+        }
+        > input {
+          margin: 0 6px;
+          background: unset;
+          box-sizing: border-box;
+          width: 94px;
+          height: 33px;
+          font-weight: bold;
+          border-radius: 5px;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          font-size: 18px;
+          text-align: center;
+          line-height: 26px;
+          &:focus {
+            outline: none;
+          }
+        }
+        >input[id^=edit-edit], >input[value=Done] {
+          color: #0A8BC2;
+          background-color: #C4C4C4;
+        }
+        >input[id^=edit-delete] {
+          color: #FFF;
+          background-color: #FF4646;
+        }
+      }
+
+      label > span.form-required {
+        display: none;
+      }
+
+      input[type=text] {
+        background-color: #EDEDED;
+        color: #8E8E8E;
+        height: 44px;
+        box-sizing: border-box;
+        width: 559px;
+        border: none;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
   }
 
 }
