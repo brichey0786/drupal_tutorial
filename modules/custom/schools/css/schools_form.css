@@ -55,12 +55,13 @@
 /* line 57, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div .form-item-address {
   grid-area: address;
+  margin-top: 8px;
 }
-/* line 61, ../scss/schools_form.scss */
+/* line 62, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div .school-rating {
   grid-area: rating;
 }
-/* line 63, ../scss/schools_form.scss */
+/* line 64, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div .school-rating__stars {
   background-color: #EDEDED;
   color: #8E8E8E;
@@ -71,18 +72,18 @@
   align-items: center;
   padding-left: 8px;
 }
-/* line 75, ../scss/schools_form.scss */
+/* line 76, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions {
   grid-area: actions;
   display: flex;
   justify-content: flex-end;
   margin: 0 -6px;
 }
-/* line 80, ../scss/schools_form.scss */
+/* line 81, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions .ajax-progress-throbber {
   display: none;
 }
-/* line 83, ../scss/schools_form.scss */
+/* line 86, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input {
   margin: 0 6px;
   background: unset;
@@ -97,25 +98,25 @@
   text-align: center;
   line-height: 26px;
 }
-/* line 96, ../scss/schools_form.scss */
+/* line 99, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input:focus {
   outline: none;
 }
-/* line 100, ../scss/schools_form.scss */
+/* line 103, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-edit], [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[value=Done] {
   color: #0A8BC2;
   background-color: #C4C4C4;
 }
-/* line 104, ../scss/schools_form.scss */
+/* line 107, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-delete] {
   color: #FFF;
   background-color: #FF4646;
 }
-/* line 110, ../scss/schools_form.scss */
+/* line 113, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div label > span.form-required {
   display: none;
 }
-/* line 114, ../scss/schools_form.scss */
+/* line 117, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div input[type=text] {
   background-color: #EDEDED;
   color: #8E8E8E;
@@ -123,8 +124,9 @@
   box-sizing: border-box;
   width: 559px;
   border: none;
+  margin: 0;
 }
-/* line 121, ../scss/schools_form.scss */
+/* line 125, ../scss/schools_form.scss */
 [id^=schools-create-school-form][data-mode=edit] > div input[type=text]:focus {
   outline: none;
 }

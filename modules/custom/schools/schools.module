@@ -58,6 +58,21 @@ function schools_init() {
   // drupal_flush_all_caches();
 }
 
+/**
+ * Implements hook_views_api
+ */
+
+ // path for two files for drupal to look for
+ // 1. MODULE_views.inc
+ // 2. MODULE_views_default.inc
+function schools_views_api()
+{
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'schools'),
+    'template path' => drupal_get_path('module', 'schools') . '/templates',
+  );
+}
 
 /**
  * Implements hook_theme().
@@ -83,6 +98,8 @@ function schools_theme() {
   );
 }
 
+
+
 function schools_overview_page() {
 
   $records = db_query('SELECT * FROM {schools}')->fetchAllAssoc('school_id', PDO::FETCH_ASSOC);
@@ -92,7 +109,11 @@ function schools_overview_page() {
 
   $form = drupal_get_form('schools_create_school_form', 'create');
 
-  // dpm($form);
+  // Get the view
+  $school_view = views_get_view('schools');
+  $school_view->set_display('Block');
+  $school_view->pre_execute();
+  $school_view_markup = $school_view->render('Block');
 
   return array(
     'page' => array(
@@ -104,6 +125,9 @@ function schools_overview_page() {
         '#markup' => $school_list
       ),
       'form' => $form,
+    ),
+    'view' => array(
+      '#markup' => $school_view_markup,
     ),
   );
 

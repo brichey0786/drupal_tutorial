@@ -83,3 +83,82 @@
   font-weight: 600;
   font-size: 12px;
 }
+
+/* line 96, ../scss/schools.scss */
+.school-list > .view-content {
+  display: grid;
+  grid-template-columns: 280px 280px;
+  column-gap: 24px;
+  row-gap: 24px;
+}
+/* line 101, ../scss/schools.scss */
+.school-list > .view-content .school {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 136px;
+  padding: 16px;
+  background: #EDEDED;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+/* line 111, ../scss/schools.scss */
+.school-list > .view-content .school .b-school-address {
+  margin-top: 8px;
+}
+/* line 115, ../scss/schools.scss */
+.school-list > .view-content .school .b-school-address .address__title, .school-list > .view-content .school .b-school-address .address__street, .school-list > .view-content .school .b-school-address .address__zip {
+  height: 18px;
+  font-size: 12px;
+}
+/* line 122, ../scss/schools.scss */
+.school-list > .view-content .school .b-school-address .address__title {
+  color: #5E2B2B;
+  font-weight: 600;
+}
+/* line 129, ../scss/schools.scss */
+.school-list > .view-content .school__address {
+  color: #5E2B2B;
+}
+/* line 133, ../scss/schools.scss */
+.school-list > .view-content .school__name {
+  font-size: 16px;
+  font-weight: 800;
+  height: 18px;
+}
+/* line 139, ../scss/schools.scss */
+.school-list > .view-content .school .school__actions {
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  align-items: flex-end;
+  margin: 0 -8px;
+}
+/* line 146, ../scss/schools.scss */
+.school-list > .view-content .school .school__actions > * {
+  margin: 0 8px;
+  padding: 8px;
+  border-radius: 4px;
+  min-width: 51px;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+}
+/* line 161, ../scss/schools.scss */
+.school-list > .view-content .school .school__actions .school__edit {
+  background-color: #C4C4C4;
+  color: #0A8BC2;
+  font-weight: 600;
+  font-size: 12px;
+}
+/* line 168, ../scss/schools.scss */
+.school-list > .view-content .school .school__actions .school__delete {
+  background-color: #FF4646;
+  color: #FFF;
+  font-weight: 600;
+  font-size: 12px;
+}

@@ -56,6 +56,7 @@
 
       .form-item-address {
         grid-area: address;
+        margin-top: 8px;
       }
 
       .school-rating {
@@ -80,6 +81,8 @@
         .ajax-progress-throbber {
           display: none;
         }
+
+
         > input {
           margin: 0 6px;
           background: unset;
@@ -118,6 +121,7 @@
         box-sizing: border-box;
         width: 559px;
         border: none;
+        margin: 0;
         &:focus {
           outline: none;
         }

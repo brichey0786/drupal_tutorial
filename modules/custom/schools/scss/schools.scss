@@ -90,3 +90,89 @@
     }
   }
 }
+
+// style the view 
+.school-list {
+  > .view-content {
+    display: grid;
+    grid-template-columns: 280px 280px;
+    column-gap: 24px;
+    row-gap: 24px;
+    .school {
+      display: flex;
+      flex-direction: column;
+      width: 280px;
+      height: 136px;
+      padding: 16px;
+      background: #EDEDED;
+      border-radius: 8px;
+      box-sizing: border-box;
+
+      .b-school-address {
+        margin-top: 8px;
+  
+        .address__ {
+          &title,
+          &street,
+          &zip {
+            height: 18px;
+            font-size: 12px;
+          }
+  
+          &title {
+            color: #5E2B2B;
+            font-weight: 600;
+          }
+        }
+      }
+  
+      &__address {
+        color: #5E2B2B;
+      }
+      
+      &__name {
+        font-size: 16px;
+        font-weight: 800;
+        height: 18px;
+      }
+  
+      .school__actions {
+        display: flex;
+        justify-content: flex-end;
+        height: 100%;
+        align-items: flex-end;
+        margin: 0 -8px;
+  
+        > * {
+          margin: 0 8px;
+          padding: 8px;
+          border-radius: 4px;
+          min-width: 51px;
+          text-align: center;
+          text-decoration: none;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 24px;
+        }
+  
+        .school__ {
+          &edit {
+            background-color: #C4C4C4;
+            color: #0A8BC2;
+            font-weight: 600;
+            font-size: 12px;
+          }
+  
+          &delete {
+            background-color: #FF4646;
+            color: #FFF;
+            font-weight: 600;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
