@@ -63,21 +63,21 @@ function schools_entity_info_page() {
   dpm(entity_get_info());
   
   $school = school_load(2);
-  dpm($school);
+  // dpm($school);
   return array();
 }
 
 function schools_entity_page($school) {
-  dpm($school);
+  // dpm($school);
   if (count($school) == 0) {
     drupal_set_message('No school found.', 'error');
     return array();
   }
-  return array();
-  // $form = drupal_get_form('schools_entity_form', 'edit', reset($school));
-  // return array(
-  //   'form' => $form,
-  // );
+
+  $form = drupal_get_form('schools_entity_form', 'edit', reset($school));
+  return array(
+    'form' => $form,
+  );
 } 
 
 
@@ -99,182 +99,184 @@ function school_load_multiple($ids = array(), $conditions = array(), $reset = FA
 }
 
 
-// function schools_entity_form($form, &$form_state, $mode) {
+function schools_entity_form($form, &$form_state, $mode) {
 
-//   // dpm($form_state);
+  // dpm($form_state);
 
-//   switch ($mode) {
-//     case 'create':
-//       $form['title'] = array(
-//         '#markup' => '<h2>Register a school</h2>',
-//       );
-//       $form['name'] = array(
-//         '#type' => 'textfield', 
-//         '#title' => 'School Name',   
-//         '#maxlength' => 255, 
-//         '#required' => TRUE,
-//       );
-//       $form['address'] = array(
-//         '#type' => 'textfield', 
-//         '#title' => 'School Address',   
-//         '#maxlength' => 255, 
-//         '#required' => TRUE,
-//       );
-//       $form['zip'] = array(
-//         '#type' => 'textfield', 
-//         '#title' => 'Zip Code',   
-//         '#maxlength' => 10, 
-//         '#required' => TRUE,
-//       );
-//       $form['submit'] = array(
-//         '#type' => 'submit', 
-//         '#value' => 'Submit',
-//       );
-//     break;
-//     case 'edit':
-//       $school = $form_state['build_info']['args'][1];
-//       $form['title'] = array(
-//         '#markup' => "<h2>{$school->name}</h2>",
-//       );
-//       $form['address'] = array(
-//         '#type' => 'textfield', 
-//         '#title' => 'Address',   
-//         '#maxlength' => 255, 
-//         '#required' => TRUE,
-//         '#default_value' => $school->address,
-//       );
-//       $form['zip'] = array(
-//         '#type' => 'textfield', 
-//         '#title' => 'Zip Code',   
-//         '#maxlength' => 10, 
-//         '#required' => TRUE,
-//         '#default_value' => $school->zip,
-//       );
-//       $form['rating'] = array(
-//         '#type' => 'container',
-//         '#attributes' => array(
-//           'class' => array('school-rating')
-//         ),
-//       );
-//       $form['rating']['title'] = array(
-//         '#markup' => '<label>Leave your rating</label>',
-//         '#attributes' => array(
-//           'class' => array('form-item-label'),
-//         ),
-//       );
-//       $form['rating']['stars'] = array(
-//         '#type' => 'container',
-//         '#attributes' => array(
-//           'class' => array('school-rating__stars')
-//         ),
-//         'rating' => array(
-//           '#markup' =>  schools_render_rating(3),
-//         ),
-//       );
-//       $form['actions'] = array(
-//         '#type' => 'container',
-//         '#attributes' => array(
-//           'id' => 'schools-form-actions'
-//         ),
-//       );
-//       $form['actions']['edit'] = array(
-//         '#type' => 'button', 
-//         '#value' => 'Edit',
-//         '#ajax' => array(
-//           'callback' => 'schools_entity_form_callback',
-//           'wrapper' => 'schools-form-actions',
-//         ),
-//       );
-//       $form['actions']['delete'] = array(
-//         '#type' => 'submit', 
-//         '#value' => 'Delete',
-//       );
-//       $form['actions']['done'] = array(
-//         '#type' => 'submit', 
-//         '#value' => 'Done',
-//         '#attributes' => array(
-//           'style' => 'display:none;',
-//         ),
-//       );
-//     break;
-//   } 
-//   $form['#attributes'] = array(
-//     'data-mode' => $mode,
-//   );
-//   $form['#attached']['css'] = array(
-//     drupal_get_path('module', 'schools') . '/css/schools_form.css',
-//   );
-//   return $form;
-// }
+  switch ($mode) {
+    case 'create':
+      $form['title'] = array(
+        '#markup' => '<h2>Register a school</h2>',
+      );
+      $form['name'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'School Name',   
+        '#maxlength' => 255, 
+        '#required' => TRUE,
+      );
+      $form['address'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'School Address',   
+        '#maxlength' => 255, 
+        '#required' => TRUE,
+      );
+      $form['zip'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'Zip Code',   
+        '#maxlength' => 10, 
+        '#required' => TRUE,
+      );
+      $form['submit'] = array(
+        '#type' => 'submit', 
+        '#value' => 'Submit',
+      );
+    break;
+    case 'edit':
+      $school = $form_state['build_info']['args'][1];
+      $form['title'] = array(
+        '#markup' => "<h2>{$school->name}</h2>",
+      );
+      $form['address'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'Address',   
+        '#maxlength' => 255, 
+        '#required' => TRUE,
+        '#default_value' => $school->address,
+      );
+      $form['zip'] = array(
+        '#type' => 'textfield', 
+        '#title' => 'Zip Code',   
+        '#maxlength' => 10, 
+        '#required' => TRUE,
+        '#default_value' => $school->zip,
+      );
+      $form['rating'] = array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'class' => array('school-rating')
+        ),
+      );
+      $form['rating']['title'] = array(
+        '#markup' => '<label>Leave your rating</label>',
+        '#attributes' => array(
+          'class' => array('form-item-label'),
+        ),
+      );
+      $form['rating']['stars'] = array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'class' => array('school-rating__stars')
+        ),
+        'rating' => array(
+          '#markup' =>  schools_render_rating(3),
+        ),
+      );
+      $form['actions'] = array(
+        '#type' => 'container',
+        '#attributes' => array(
+          'id' => 'schools-form-actions'
+        ),
+      );
+      $form['actions']['edit'] = array(
+        '#type' => 'button', 
+        '#value' => 'Edit',
+        '#ajax' => array(
+          'callback' => 'schools_entity_form_callback',
+          'wrapper' => 'schools-form-actions',
+        ),
+      );
+      $form['actions']['delete'] = array(
+        '#type' => 'submit', 
+        '#value' => 'Delete',
+      );
+      $form['actions']['done'] = array(
+        '#type' => 'submit', 
+        '#value' => 'Done',
+        '#attributes' => array(
+          'style' => 'display:none;',
+        ),
+      );
+    break;
+  } 
+  $form['#attributes'] = array(
+    'data-mode' => $mode,
+  );
+  $form['#attached']['css'] = array(
+    drupal_get_path('module', 'schools') . '/css/schools_form.css',
+  );
+  return $form;
+}
 
-// function schools_entity_form_callback($form, &$form_state) {
-//     return array(
-//       '#type' => 'container',
-//       '#attributes' => array(
-//         'id' => 'schools-form-actions'
-//       ),
-//       'done' => array(
-//         '#type' => 'submit', 
-//         '#value' => 'Done',
-//       ),
-//     );
-// }
+function schools_entity_form_callback($form, &$form_state) {
+    return array(
+      '#type' => 'container',
+      '#attributes' => array(
+        'id' => 'schools-form-actions'
+      ),
+      'done' => array(
+        '#type' => 'submit', 
+        '#value' => 'Done',
+      ),
+    );
+}
 
-// /**
-//  * Implements validation from the Form API.
-//  * 
-//  * @param $form
-//  *   A structured array containing the elements and properties of the form.
-//  * @param $form_state
-//  *   An array that stores information about the form's current state 
-//  *   during processing.
-//  */
-// function schools_entity_form_validate($form, &$form_state) {
-//   // dpm($form_state);
-//   $values = &$form_state['values'];
+/**
+ * Implements validation from the Form API.
+ * 
+ * @param $form
+ *   A structured array containing the elements and properties of the form.
+ * @param $form_state
+ *   An array that stores information about the form's current state 
+ *   during processing.
+ */
+function schools_entity_form_validate($form, &$form_state) {
+  // dpm($form_state);
+  $values = &$form_state['values'];
 
-//   if (isset($values['name']) && strlen($values['name']) > 255){
-//     form_set_error('name', 'Length of name field must be less than 255.');
-//   }
+  if (isset($values['name']) && strlen($values['name']) > 255){
+    form_set_error('name', 'Length of name field must be less than 255.');
+  }
 
-//   if (isset($values['address']) && strlen($values['address']) > 255){
-//     form_set_error('address', 'Length of address field must be less than 255.');
-//   }
+  if (isset($values['address']) && strlen($values['address']) > 255){
+    form_set_error('address', 'Length of address field must be less than 255.');
+  }
 
-//   if (isset($values['zip']) && strlen($values['zip']) != 5){
-//     form_set_error('zip', 'Zip code must be of length 5.');
-//   }
-// }
+  if (isset($values['zip']) && strlen($values['zip']) != 5){
+    form_set_error('zip', 'Zip code must be of length 5.');
+  }
+}
 
-// function schools_entity_form_submit($form, &$form_state) {
-//   $mode = $form_state['build_info']['args'][0];
-//   $values = &$form_state['values'];
-//   $address = $values['address'];
-//   $zip = $values['zip'];
-//   switch ($mode) {
-//     case 'create':
-//       $name = $values['name'];
-//       $school = entity_create('school', array());
-//       $school->name = $name;
-//       $school->address = $address;
-//       $school->zip = $zip;
-//       entity_save('school', $school);
-//     break;
-//     case 'edit': {
-//       $school = $form_state['build_info']['args'][1];
+function schools_entity_form_submit($form, &$form_state) {
+  $mode = $form_state['build_info']['args'][0];
+  $values = &$form_state['values'];
+  $address = $values['address'];
+  $zip = $values['zip'];
+  switch ($mode) {
+    case 'create':
+      $name = $values['name'];
+      // entity bundle and entity properties
+      $school = entity_create('school', array());
+      $school->name = $name;
+      $school->address = $address;
+      $school->zip = $zip;
+      entity_save('school', $school);
+    break;
+    case 'edit': {
+      $school = $form_state['build_info']['args'][1];
 
-//       $op = $form_state['values']['op'];
-//       if ($op == 'Delete') {
-//         entity_delete('school', $school->school_id);
-//         drupal_goto('/schools');
+      $op = $form_state['values']['op'];
+      if ($op == 'Delete') {
+        entity_delete('school', $school->school_id);
+        drupal_goto('/schools');
 
-//       } else { // $op = 'Edit'
-//         // update the existing record in database
-//         $school->address = $address;
-//         $school->zip = $zip;
-//         entity_save('school', $school);
-//       } 
-//     }
-//   }
+      } else { // $op = 'Edit'
+        // update the existing record in database
+        $school->address = $address;
+        $school->zip = $zip;
+        // $school->save();
+        entity_save('school', $school);
+      } 
+    }
+  }
 
-// }
+}
