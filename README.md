@@ -43,7 +43,7 @@ tutorial there the concept of hooks will be mentioned from time to time.
 * There will be a complementary but comprehensive tutorials credited to Drupalize.me shared in
   Google Drive. They act as references, and will be referred to along this project as `Drive: Topic/Content`.
 
-## 1. Drupal Installation
+## 1. Drupal Installation (v1.0.0)
   1. Choose `Standard`, and click `Save and Continue`
   2. Click `Save and Continue`
   3. Choose `MySQL, MariaDB, or equivalent`
@@ -64,8 +64,10 @@ tutorial there the concept of hooks will be mentioned from time to time.
   9. You should be redirected to the home page with the title “Welcome to ISAFE”. Note that at the top we have the admin menus starting with “Dashboard”, “Content”, etc.
   10. You can also log out the system and try login using the email and password combination in step v.
   11. Welcome to Drupal :)
+  * **Drive**: `General/Introduction to Module Development for Drupal 7`
+  * **Drive**: `Coding-Standard/*`
 
-## 2. Register a menu
+## 2. Register a menu (v1.0.2)
   * VSCode Extensions (Recommended)
     1. PHP IntelliSense
     2. PHP Intelephense
@@ -77,55 +79,108 @@ tutorial there the concept of hooks will be mentioned from time to time.
       * `schools.info`: meta information about a module
       * `schools.module`: module content
   * Note: it may take some time for our Drupal site to refresh its registry to reflect the changes we make in the menu hook
-  * Drive: `General/Overview of the Drupal Menu System`
+  * **Drive**: `General/Anatomy of a Drupal Module`
+  * **Drive**: `General/The Event-Driven Hook System`
+  * **Drive**: `General/Tips for Writing Secure Code`
+  * **Drive**: `General/Overview of the Drupal Menu System`
 
-## 3. Render a list
+## 3. Render a list (v1.0.3)
   * Make sure you pull tag v1.0.3 from this repository, which contains our updated docker composer configuration files.
   * Make sure to run `docker-compose up -d` again. You should be able to visit the same URL and see our item list.
+  * **Drive**: `General/Helpful Tools for Module Development`
+  * **Drive**: `General/An Overview of the Devel Module`
+  * **Drive**: `General/Integrating with the Theme System`
 
-## 4. Add links to other pages
+## 4. Add links to other pages (v1.0.4)
   * anchor tag
   * theme_link
   * `l()`
-## 5. Build a form
-* [Form API](https://api.drupal.org/api/drupal/developer%21topics%21forms_api_reference.html/7.x)
-* `{YOUR_FORM_NAME}_form($form, &$form_state)`
-* `{YOUR_FORM_NAME}_form_validate($form, &$form_state)`
-* `{YOUR_FORM_NAME}_form_submit($form, &$form_state)`
+  * **Drive**: `General/Drupal API Documentation`
+  * **Drive**: `General/Using the Drupal Render API`
+  * **Drive**: `General/Attachments and Caching with the Render API`
 
-## 6. Create the database schema
+## 5. Build a form (v1.0.5)
+  * [Form API](https://api.drupal.org/api/drupal/developer%21topics%21forms_api_reference.html/7.x)
+  * `{YOUR_FORM_NAME}_form($form, &$form_state)`
+  * `{YOUR_FORM_NAME}_form_validate($form, &$form_state)`
+  * `{YOUR_FORM_NAME}_form_submit($form, &$form_state)`
+  * **Drive**: `General/Using URL Arguments in Page Callback Functions`
+  * **Drive**: `General/An Overview of the Form API`
+
+## 6. Create the database schema (v1.0.6)
 1. [Install compass](http://compass-style.org/install/), add mock data, and style the page
 2. Create table and replace mock data
+* **Drive**: `General/An Overview of the Database Layer in Drupal 7`
+* **Drive**: `General/Querying the Database with db_select()`
+* **Drive**: `General/Querying the Database with Query Methods`
 
-## 7. Handle form validation and submission
+## 7. Handle form validation and submission (v1.0.7)
 * Note that we should get the input values from `$form_state['values']`
 * Please do not trust any user input
+* **Drive**: `General/Creating, Submitting and Validating a Simple Form`
+* **Drive**: `General/Organizing Collections of Form Elements`
+* **Drive**: `General/Altering Forms with hook_form_alter()`
+* **Drive**: `General/Altering Specific Forms and Customizing Validation`
+* **Drive**: `General/Creating a Configuration Settings Form for Your Module`
 
-## 8. `hook_theme`, CRUD and Styling Wrap-up 
+## 8. `hook_theme`, CRUD and Styling Wrap-up (v1.0.8)
 1. Theme hook
 2. Important notes for developers
 3. More styling
 4. Override page template
 5. Fetch individual school from database
 6. Form with different "modes"
-  * You can try to style the form to exactly match the prototype.
-  * The final styling is not included in the video but in tag v1.0.8.
+    * You can try to style the form to exactly match the prototype.
+    * The final styling is not included in the video but in tag v1.0.8.
+* **Drive**: `General/Altering the Page Array`
 
-## 9. `hook_data` and Views
+## 9. `hook_data` and Views (v1.0.9)
+* **Drive**: `Views/*`
 
-## 10. Entity and Views
+## 10. Entity and Views (v1.0.10)
 
-* Note: Applied this [patch #16 + #49](https://www.drupal.org/project/entity/issues/1803048#comment-13101198) in the `entity.controller.inc` and `includes/entity.inc` to suppress the error on array_flip
+  * Note: Applied this [patch #16 + #49](https://www.drupal.org/project/entity/issues/1803048#comment-13101198) in the `entity.controller.inc` and `includes/entity.inc` to suppress the error on array_flip
+  * **Drive**: `General/Adding Contextual Menu Links and Using Menu Autoloaders`
+  * **Drive**: `General/Adding a Table to the Database`
+  * **Drive**: `Entity/*`
 
-## 11. CRUD operations on Entities
+## 11. CRUD operations on Entities (v1.0.11)
+* Extra: how to define an Entity controller 
+* **Drive**: `General/Altering the Database`
 
-## 12. Preact
+## 12. Attach JavaScript (v1.0.12)
+* Attach JS to form
+* Add JS globally
 
-## 13. Summary
+## 13. Preact (v1.0.13)
+* [Starter Template](https://github.com/qidian99/preact-custom-element)
+* Install preact-cli globally by calling `npm i -g preact-cli`
+* Install browserify globally by calling `npm i -g browserify`
+
+## 14. Summary
+* We have learned about
+    * `menu_hook`
+    * page callback functions
+    * render(able) arrays
+    * Form API
+        * form and form state
+        * form submission handler
+        * form callback
+    * Entity API
+    * Views
+    * page templates
+    * `hook_preprocess_page`
+    * CSS, SCSS
+    * JavaScript, jQuery
+    * HTML5
+        * theme debugging
+        * developer console
+    * Preact
+        * custom elements
+* (More exercise) **Drive**: `Excercise-Movie/*`: 
 
 
 # Misc
-
 * [Named volumne mapped to host](https://stackoverflow.com/questions/36387032/how-to-set-a-path-on-host-for-a-named-volume-in-docker-compose-yml/49920624#49920624)
 
 

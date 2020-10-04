@@ -1,5 +1,10 @@
 [id^=schools-create-school-form],
 [id^=schools-entity-form] {
+  .school-rating__stars {
+    > * {
+      cursor: pointer;
+    }
+  }
 
   &[data-mode=create] {
     width: 180px;

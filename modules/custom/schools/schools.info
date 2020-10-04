@@ -5,3 +5,5 @@ core = 7.x
 package = Schools
 
 stylesheets[all][] = css/schools.css
+; scripts[] = js/xxx.js
+scripts[] = js/wcs.js

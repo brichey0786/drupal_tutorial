@@ -107,6 +107,8 @@ function schools_overview_page() {
   $school_list = theme('school_list', array('schools' => $records));
   // dpm($school_list);
 
+  dpm(json_encode(array_values($records)));
+
   $form = drupal_get_form('schools_create_school_form', 'create');
 
   // Get the view
@@ -128,6 +130,9 @@ function schools_overview_page() {
     ),
     'view' => array(
       '#markup' => $school_view_markup,
+    ),
+    'wc' => array(
+      '#markup' => '<custom-schools schools=\'' . json_encode(array_values($records)) . '\'></custom-schools>',
     ),
   );
 
@@ -245,6 +250,10 @@ function schools_create_school_form($form, &$form_state, $mode) {
   );
   $form['#attached']['css'] = array(
     drupal_get_path('module', 'schools') . '/css/schools_form.css',
+  );
+  $form['#attached']['js'][] = array(
+    'data' => drupal_get_path('module', 'schools') . '/js/schools_form.js',
+    'type' => 'file', // another type is inline
   );
   return $form;
 }
