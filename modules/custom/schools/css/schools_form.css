@@ -1,68 +1,81 @@
-/* line 3, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=create] {
+/* line 4, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create],
+[id^=schools-entity-form][data-mode=create] {
   width: 180px;
   background: #EDEDED;
   padding: 16px;
   box-sizing: border-box;
 }
-/* line 10, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=create] label > span.form-required {
+/* line 11, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] label > span.form-required,
+[id^=schools-entity-form][data-mode=create] label > span.form-required {
   display: none;
 }
-/* line 14, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=create] div.form-item.form-type-textfield {
+/* line 15, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] div.form-item.form-type-textfield,
+[id^=schools-entity-form][data-mode=create] div.form-item.form-type-textfield {
   margin: 18px 0 0;
 }
-/* line 18, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=create] input {
+/* line 19, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] input,
+[id^=schools-entity-form][data-mode=create] input {
   border: none;
 }
-/* line 20, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=create] input:focus {
+/* line 21, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] input:focus,
+[id^=schools-entity-form][data-mode=create] input:focus {
   outline: none;
 }
-/* line 25, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=create] input[type=submit][id^=edit-submit] {
+/* line 26, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] input[type=submit][id^=edit-submit],
+[id^=schools-entity-form][data-mode=create] input[type=submit][id^=edit-submit] {
   width: 100%;
   background: #CCC;
   border-radius: 6px;
   margin: 18px 0 0;
 }
-/* line 31, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=create] input.form-text {
+/* line 32, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] input.form-text,
+[id^=schools-entity-form][data-mode=create] input.form-text {
   width: 100%;
   background-color: #E4E4E4;
   box-sizing: border-box;
 }
-/* line 37, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=create] h2 {
+/* line 38, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=create] h2,
+[id^=schools-entity-form][data-mode=create] h2 {
   margin: 0;
   font-weight: bold;
   font-size: 15px !important;
 }
-/* line 46, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div {
+/* line 47, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div,
+[id^=schools-entity-form][data-mode=edit] > div {
   display: grid;
   grid-template-areas: "title actions" "address address" "zip zip" "rating rating";
   grid-template-columns: 426px 211px;
 }
-/* line 51, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div h2 {
+/* line 52, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div h2,
+[id^=schools-entity-form][data-mode=edit] > div h2 {
   grid-area: title;
   margin-top: 0;
   font-size: 23px !important;
 }
-/* line 57, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div .form-item-address {
+/* line 58, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div .form-item-address,
+[id^=schools-entity-form][data-mode=edit] > div .form-item-address {
   grid-area: address;
   margin-top: 8px;
 }
-/* line 62, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div .school-rating {
+/* line 63, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div .school-rating,
+[id^=schools-entity-form][data-mode=edit] > div .school-rating {
   grid-area: rating;
 }
-/* line 64, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div .school-rating__stars {
+/* line 65, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div .school-rating__stars,
+[id^=schools-entity-form][data-mode=edit] > div .school-rating__stars {
   background-color: #EDEDED;
   color: #8E8E8E;
   height: 44px;
@@ -72,19 +85,22 @@
   align-items: center;
   padding-left: 8px;
 }
-/* line 76, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions {
+/* line 77, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions,
+[id^=schools-entity-form][data-mode=edit] > div #schools-form-actions {
   grid-area: actions;
   display: flex;
   justify-content: flex-end;
   margin: 0 -6px;
 }
-/* line 81, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions .ajax-progress-throbber {
+/* line 82, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions .ajax-progress-throbber,
+[id^=schools-entity-form][data-mode=edit] > div #schools-form-actions .ajax-progress-throbber {
   display: none;
 }
-/* line 86, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input {
+/* line 87, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input,
+[id^=schools-entity-form][data-mode=edit] > div #schools-form-actions > input {
   margin: 0 6px;
   background: unset;
   box-sizing: border-box;
@@ -98,26 +114,32 @@
   text-align: center;
   line-height: 26px;
 }
-/* line 99, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input:focus {
+/* line 100, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input:focus,
+[id^=schools-entity-form][data-mode=edit] > div #schools-form-actions > input:focus {
   outline: none;
 }
-/* line 103, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-edit], [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[value=Done] {
+/* line 104, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-edit], [id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[value=Done],
+[id^=schools-entity-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-edit],
+[id^=schools-entity-form][data-mode=edit] > div #schools-form-actions > input[value=Done] {
   color: #0A8BC2;
   background-color: #C4C4C4;
 }
-/* line 107, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-delete] {
+/* line 108, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-delete],
+[id^=schools-entity-form][data-mode=edit] > div #schools-form-actions > input[id^=edit-delete] {
   color: #FFF;
   background-color: #FF4646;
 }
-/* line 113, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div label > span.form-required {
+/* line 114, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div label > span.form-required,
+[id^=schools-entity-form][data-mode=edit] > div label > span.form-required {
   display: none;
 }
-/* line 117, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div input[type=text] {
+/* line 118, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div input[type=text],
+[id^=schools-entity-form][data-mode=edit] > div input[type=text] {
   background-color: #EDEDED;
   color: #8E8E8E;
   height: 44px;
@@ -126,7 +148,8 @@
   border: none;
   margin: 0;
 }
-/* line 125, ../scss/schools_form.scss */
-[id^=schools-create-school-form][data-mode=edit] > div input[type=text]:focus {
+/* line 126, ../scss/schools_form.scss */
+[id^=schools-create-school-form][data-mode=edit] > div input[type=text]:focus,
+[id^=schools-entity-form][data-mode=edit] > div input[type=text]:focus {
   outline: none;
 }

@@ -115,6 +115,8 @@ tutorial there the concept of hooks will be mentioned from time to time.
 
 ## 10. Entity and Views
 
+* Note: Applied this [patch #16 + #49](https://www.drupal.org/project/entity/issues/1803048#comment-13101198) in the `entity.controller.inc` and `includes/entity.inc` to suppress the error on array_flip
+
 ## 11. CRUD operations on Entities
 
 ## 12. Preact

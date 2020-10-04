@@ -770,7 +770,7 @@ class EntityAPIControllerExportable extends EntityAPIController {
    */
   protected function cacheGet($ids, $conditions = array()) {
     if (!empty($this->entityCache) && $ids !== array()) {
-      $entities = $ids ? array_intersect_key($this->entityCache, array_flip($ids)) : $this->entityCache;
+      $entities = $ids && is_array($ids) ? array_intersect_key($this->entityCache, array_flip(array_filter($ids))) : $this->entityCache;
       return $this->applyConditions($entities, $conditions);
     }
     return array();

@@ -1,4 +1,5 @@
-[id^=schools-create-school-form] {
+[id^=schools-create-school-form],
+[id^=schools-entity-form] {
 
   &[data-mode=create] {
     width: 180px;

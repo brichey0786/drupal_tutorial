@@ -1,0 +1,39 @@
+<?php
+
+// Part of the Schema API
+/**
+ * Implements hook_schema().
+ */
+function schools_entity_schema() {
+
+  $schema['schools'] = array(
+    'description' => 'Basic school table with id, name, address, and zip code.',
+    'fields' => array(
+        'school_id' => array(
+            'type' => 'serial',
+            'not null' => true,
+        ),
+        'name' => array (
+            'type' => 'varchar',
+            'length' => 255,
+            'not null' => true,
+            'default' => '',
+        ),
+        'address' => array (
+            'type' => 'varchar',
+            'length' => 255,
+            'not null' => true,
+            'default' => '',
+        ),
+        'zip' => array (
+            'type' => 'varchar',
+            'length' => 5,
+            'not null' => true,
+            'default' => '',
+        ),
+    ),
+    'primary key' => array('school_id'),
+  );
+
+  return $schema;  
+}
