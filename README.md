@@ -1,4 +1,30 @@
 # Drupal 7 Tutorial - Schools
+## Update
+If you pulled the latest branch, you should see the following lines in `docker-compose.yml`
+```
+d7:
+  image: drupal:7.73-apache
+  container_name: d7
+  ports:
+    - 8889:80
+  depends_on:
+    - d7mysql
+  volumes:
+    - drupal-data:/var/www/html
+    - ./modules:/var/www/html/sites/all/modules:consistent
+    # - ./.htaccess:/var/www/html/.htaccess
+    # - ./settings.php:/var/www/html/sites/default/settings.php
+    # - ./entity.inc:/var/www/html/includes/entity.inc
+  restart: always
+```
+
+Continue to installation part. After that, uncomment the commented lines and run the following
+commands in sequence
+
+```bash
+docker-compose kill
+docker-compose up -d
+```
 ## Overview
 In this tutorial, we will work on a sample project that displays a list of schools and allows up to
 add, update, and delete schools.
@@ -199,4 +225,5 @@ tutorial there the concept of hooks will be mentioned from time to time.
 
     `docker-compose down -v --rmi all --remove-orphans`
 
-* [Disable Zend OpCache](https://www.woktron.com/secure/knowledgebase/261/Disable-Opcache-for-PHP.html)
+* [Disable Zend
+  OpCache](https://www.woktron.com/secure/knowledgebase/261/Disable-Opcache-for-PHP.html)
